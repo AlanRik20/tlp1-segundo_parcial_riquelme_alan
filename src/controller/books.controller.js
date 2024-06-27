@@ -1,5 +1,4 @@
 const database = require("../bd");
-const ctrl = {}
 
 const viewBook=(req, res)=>{
     res.json(database)
@@ -14,11 +13,11 @@ const deleteBook =(req, res)=>{
 }
 
 const insertBook = (req, res)=>{
-    const {id, title, author, year} = req.body
-
-    const agregar = database.push({id,title,author,year})
-
-    res.json({mensaje:"libro agregado", agregar})
+    let id = database.length + 1; 
+    const {title, author, year} = req.body;
+    
+    !title || !author || !year ? res.json({ message: "Todos los campos son obligatorios" }) : database.push({ id: id, title:title, author:author, year:year });
+    res.json({mensaje:"libro agregado"})
 
 }
 
