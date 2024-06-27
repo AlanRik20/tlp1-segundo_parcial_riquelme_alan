@@ -34,4 +34,24 @@ const modifyBook = (req, res)=>{
     res.json({mensaje:"libro agregado"})
 }
 
-module.exports={viewBook, deleteBook, insertBook, modifyBook}
+const selectBookId = (req, res)=>{
+    try {
+    const id = parseInt( req.params.id)
+    
+    const buscar = database.find((title)=>title.id===id)
+    
+    if(!buscar){
+        res.json({mensaje:"libro no encontrado"})
+    }
+        
+    res.json(buscar);
+
+
+    } catch (error) {
+        res.json({mensaje:"error"})
+    }
+
+}
+
+module.exports={viewBook, deleteBook, insertBook, modifyBook, selectBookId}
+
