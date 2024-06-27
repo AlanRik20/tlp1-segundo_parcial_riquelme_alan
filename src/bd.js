@@ -1,9 +1,9 @@
 const database = [
     {
-        id: "1",
+        id: 1,
         title: "Percy Jackson",
         author: "Un Autor",
-        year: "2005"
+        year: 2005
     }
 ]
 

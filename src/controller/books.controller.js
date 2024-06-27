@@ -1,4 +1,3 @@
-const { title } = require("process");
 const database = require("../bd");
 const ctrl = {}
 
@@ -14,5 +13,25 @@ const deleteBook =(req, res)=>{
     res.json({mensaje:"libro eliminado", borrar})
 }
 
+const insertBook = (req, res)=>{
+    const {id, title, author, year} = req.body
 
-module.exports={viewBook, deleteBook}
+    const agregar = database.push({id,title,author,year})
+
+    res.json({mensaje:"libro agregado", agregar})
+
+}
+
+const modifyBook = (req, res)=>{
+    const {title, author, year} = req.body
+    const id = parseInt(req.params.id)
+
+    const buscar = database.find((book)=>book.id===id);
+    buscar.title=title;
+    buscar.author=author;
+    buscar.year=year;
+
+    res.json({mensaje:"libro agregado"})
+}
+
+module.exports={viewBook, deleteBook, insertBook, modifyBook}
