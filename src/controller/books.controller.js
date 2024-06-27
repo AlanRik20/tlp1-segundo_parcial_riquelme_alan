@@ -52,5 +52,5 @@ const selectBookId = (req, res) => {
 
 }
 
-module.exports = { viewBook, deleteBook, insertBook, modifyBook, selectBookId, insertById }
+module.exports = { viewBook, deleteBook, insertBook, modifyBook, selectBookId }
 
