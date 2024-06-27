@@ -16,6 +16,10 @@ const insertBook = (req, res) => {
     let id = database.length + 1;
     const { title, author, year } = req.body;
 
+    if (typeof title !== 'string' || typeof author !== 'string') {
+        res.status(400).json({ message: "El título y el autor deben ser texto" });
+    }
+
     !title || !author || !year ? res.json({ message: "Todos los campos son obligatorios" }) : database.push({ id: id, title: title, author: author, year: year });
     res.json({ mensaje: "libro agregado" })
 
